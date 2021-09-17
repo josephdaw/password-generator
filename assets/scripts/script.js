@@ -11,10 +11,13 @@ const specialChar = ["!","@","#","$","%","&","*","(",")","-"];
 function generatePassword() {
   // create an empty array which will be used to hold selected characters
   var passwordCharacters = [];
+  var passwordLength = 0;
+  var generatedPassword = [];
   
-
   // ask user how long they want their password (between 8 and 128 incl)
-  var passwordLength = prompt("How long would you like your password to be?\nType a number greater than 7 and less than 129");
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("How long would you like your password to be?\nType a number greater than 7 and less than 129");
+  };
 
   // ask user if they want to include lowercase
   var inclLowerLetters = confirm("Would you like to include lowercase letters?");
@@ -45,16 +48,24 @@ function generatePassword() {
   };
 
   // check that the user has selected at least one option
-
+  if ((!inclLowerLetters) && (!inclUpperLetters) && (!inclNumbers) && (!inclSpecials)) {
+    alert("Sorry, you must select at least one option");
+    generatePassword();
+  };
+  
 
   console.log(passwordLength,inclLowerLetters, inclUpperLetters, inclNumbers, inclSpecials);
   console.log(passwordCharacters);
 
 
   // generate the password
+  for (let i = 0; i < passwordLength; i++) {
+    var index = Math.floor(Math.random() * passwordCharacters.length);
+    generatedPassword.push(passwordCharacters[index]);
+  }
 
   // return the password to be writen to page
-
+  return generatedPassword;
 }
 
 // Write password to the #password input
