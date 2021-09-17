@@ -64,8 +64,11 @@ function generatePassword() {
     generatedPassword.push(passwordCharacters[index]);
   }
 
+  var myPassword = generatedPassword.toString();
+  myPassword = myPassword.replace(/,/g, '');
+
   // return the password to be writen to page
-  return generatedPassword;
+  return myPassword;
 }
 
 // Write password to the #password input
