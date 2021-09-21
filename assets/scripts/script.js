@@ -39,8 +39,9 @@ function askUserParameters() {
   // start with clean passwordCharacters array
   passwordCharacters = []
 
-  // ask user how long they want their password (between 8 and 128 incl)
-  while (passwordLength < 8 || passwordLength > 128) {
+  // ask user how long they want their password 
+  // check that the answer is between 8 and 128 inclusive and is a number
+  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength * 1)) {
     passwordLength = prompt("How long would you like your password to be?\nType a number greater than 7 and less than 129");
   };
 
