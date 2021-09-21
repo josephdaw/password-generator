@@ -23,9 +23,7 @@ function generatePassword() {
   createPassword();
 
   // convert array to string
-  var myPassword = generatedPassword.toString();
-  // remove commas from string
-  myPassword = myPassword.replace(/,/g, '');
+  var myPassword = generatedPassword.join('');
 
   // return the password to be writen to page
   return myPassword;
