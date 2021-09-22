@@ -7,7 +7,7 @@ const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const specialChar = ["!", "@", "#", "$", "%", "&", "*", "(", ")", "-"];
 
 // create an empty array which will be used to hold selected characters
-var passwordCharacters = [];
+//var passwordCharacters = [];
 var passwordLength;
 var generatedPassword = [];
 
@@ -94,8 +94,8 @@ function createPassword() {
   }
   
   // check that the password meets selected parameters
-  if (inclLowerLetters) {
-    var checkLowerLetters = findCommonElements(generatedPassword, alphabetLower);
+  if (inclLowerLetters) { 
+    var checkLowerLetters = findCommonElements(generatedPassword, alphabetLower); 
   };
   if (inclUpperLetters) {
     var checkUpperLetters = findCommonElements(generatedPassword, alphabetUpper);
@@ -107,16 +107,14 @@ function createPassword() {
     var checkSpecials = findCommonElements(generatedPassword, specialChar);
   };
 
-  console.log("password created")
 
   // if any selected parameters are not included in the password, create a new password
   if (
-    (checkLowerLetters == false) ||
-    (checkUpperLetters == false) ||
-    (checkNumbers == false) ||
-    (checkSpecials == false)
+    (!checkLowerLetters) ||
+    (!checkUpperLetters) ||
+    (!checkNumbers) ||
+    (!checkSpecials)
   ) {
-    console.log("Need new password")
     // create a new one
     createPassword();
   }
