@@ -112,12 +112,13 @@ function createPassword() {
 
   // if any selected parameters are not included in the password, create a new password
   if (
-    (!checkLowerLetters) ||
-    (!checkUpperLetters) ||
-    (!checkNumbers) ||
-    (!checkSpecials)
+    (checkLowerLetters == false) ||
+    (checkUpperLetters == false) ||
+    (checkNumbers == false) ||
+    (checkSpecials == false)
   ) {
     // create a new one
+
     createPassword();
   }
 }; // END -- createPassword
