@@ -44,28 +44,28 @@ function askUserParameters() {
   };
 
   // ask user if they want to include lowercase
-  inclLowerLetters = confirm("Would you like to include lowercase letters?");
+  inclLowerLetters = confirm("Would you like to include lowercase letters?\n\n(Ok = Yes, Cancel = No)");
   // if true add to passwordCharacters
   if (inclLowerLetters) {
     passwordCharacters = passwordCharacters.concat(alphabetLower);
   };
 
   // ask user if they want to include uppercase
-  inclUpperLetters = confirm("Would you like to include uppercase letters?");
+  inclUpperLetters = confirm("Would you like to include uppercase letters?\n\n(Ok = Yes, Cancel = No)");
   // if true add to passwordCharacters
   if (inclUpperLetters) {
     passwordCharacters = passwordCharacters.concat(alphabetUpper);
   };
 
   // ask user if they want to include numbers
-  inclNumbers = confirm("Would you like to include numbers?");
+  inclNumbers = confirm("Would you like to include numbers?\n\n(Ok = Yes, Cancel = No)");
   // if true add to passwordCharacters
   if (inclNumbers) {
     passwordCharacters = passwordCharacters.concat(digits);
   };
 
   // ask user if they want to include special characters
-  inclSpecials = confirm("Would you like to include special characters?");
+  inclSpecials = confirm("Would you like to include special characters?\n\n(Ok = Yes, Cancel = No)");
   // if true add to passwordCharacters
   if (inclSpecials) {
     passwordCharacters = passwordCharacters.concat(specialChar);
@@ -78,7 +78,8 @@ function askUserParameters() {
     (!inclNumbers) &&
     (!inclSpecials)
   ) {
-    alert("Sorry, you must select at least one option");
+    // if they haven't made at least one section, notify them and then start again
+    alert("Sorry, you must select at least one option.");
     askUserParameters();
   };
 }; // END -- askUserParameters
@@ -88,6 +89,7 @@ function createPassword() {
   // start with empty password array
   generatedPassword = [];
 
+  // create an array randomly from the available characters
   for (let i = 0; i < passwordLength; i++) {
     var index = Math.floor(Math.random() * passwordCharacters.length);
     generatedPassword.push(passwordCharacters[index]);
